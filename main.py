@@ -3,9 +3,9 @@
 import cgi
 import os
 import awl
+import urllib2
 
 from google.appengine.ext import webapp
-from google.appengine.api import urlfetch
 from google.appengine.ext.webapp import template
 from google.appengine.ext.webapp.util import run_wsgi_app
 
@@ -23,24 +23,28 @@ class MainPage(webapp.RequestHandler):
 
     if awl_url:
       request_url = awl.getRequestUrl(awl_url, list_type, awl_id)
-      result = urlfetch.fetch(request_url)
-
-      if 200 == result.status_code:
-        items = awl.getList(result.content)
+      
+      try:
+        response = urllib2.urlopen(request_url)
+        items = awl.getList(response.read())
 
         template_values = {
-          'items': items,
+          'items': items
         }
-      
+        
         path = os.path.join(os.path.dirname(__file__), 'widget.html')
         self.response.out.write(template.render(path, template_values))
+        
+      except:
+        pass
     
     else:
       path = os.path.join(os.path.dirname(__file__), 'error.html')
       self.response.out.write(template.render(path, {}))
 
-application = webapp.WSGIApplication(
-                                     [('/widgetbox', MainPage)],
+application = webapp.WSGIApplication([
+                                      ('/widgetbox', MainPage),
+                                      ],
                                      debug=True)
 
 def main():
