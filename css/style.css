@@ -1,0 +1,23 @@
+body {
+background:#eee;
+margin:0;
+padding:0;
+}
+h1, h2, h3 {
+clear:both;
+margin:10px 0;
+}
+img {
+margin:5px 0 10px;
+}
+#wrapper {
+width:900px;
+margin:0 auto;
+background:#fff;
+padding:10px 15px;
+}
+.widget-box-left {
+float:left;
+width:290px;
+text-align:center;
+}

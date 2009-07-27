@@ -1,0 +1,61 @@
+body {
+margin:0;
+padding:0;
+font-family:sans-serif;
+}
+#awlwrapper {
+width:200px;
+height:230px;
+margin:0;
+padding:0;
+background:#fff;
+}
+#awlcarousel {
+width:190px;
+height:220px;
+margin:0;
+padding:5px;
+}
+#awlcarousel h3 {
+font:bold 12px sans-serif;
+height:30px;
+width:185px;
+overflow:hidden;
+margin:0;
+padding:0;
+}
+#awlcarousel li {
+display:none;
+margin:0;
+padding:0;
+text-align:center;
+}
+#awlcarousel a img {
+border:0;
+margin:10px 0 0 0;
+}
+.awl-links {
+position:absolute;
+top:210px;
+left:0px;
+width:200px;
+text-align:center;
+}
+.awl-links a {
+font-size:14px;
+}
+.awlnav {
+background-color:#eee;
+border:1px solid #ccc;
+cursor:pointer;
+font-size:14px;
+padding:2px 3px;
+position:absolute;
+top:110px;
+}
+#awlnav-prev {
+left:1px;
+}
+#awlnav-next {
+left:183px;
+}

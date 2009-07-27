@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>My Amazon Wishlist</title>
+    <link rel="stylesheet" type="text/css" href="/css/widget-style.css" />
+</head>
+<body>
+<div id="awlwrapper">
+    <ul id="awlcarousel">
+    {% for item in items %}
+      <li id="item-{{ forloop.counter }}">
+        <h3>{{ item.title }}</h3>
+        <div class="awldesc">
+          <a target="_top" rel="nofollow" href="{{ item.url }}"><img src="{{ item.img_src }}" alt="{{ item.title }}" /></a>
+        </div>
+        <div class="awl-links">
+          <a target="_top" rel="nofollow" href="{{ item.url }}">Buy for: {{ item.price }}</a>
+        </div>
+      </li>
+    {% endfor %}
+    </ul>
+    <div id="awlnav-prev" class="awlnav"><a onclick="awlnav('prev');" title="Previous">&laquo;</a></div>
+    <div id="awlnav-next" class="awlnav"><a onclick="awlnav('next');" title="Next">&raquo;</a></div>
+</div>
+<script src="/js/jquery-1.2.6.min.js" type="text/javascript"></script>
+<script src="/js/awl.js" type="text/javascript"></script>
+</body>
+</html>
