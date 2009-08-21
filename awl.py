@@ -62,13 +62,11 @@ def getRequestUrl(awl_url, list_type, awl_id):
   # Get the values in the same order of the sorted keys
   values = map(url_params.get, keys)
   
-  # Reconstruct the URL paramters and encode them
-  url_string = urlencode(zip(keys,values))
-  url_string = url_string.replace('+'," ")
-  url_string = url_string.replace(':',":")
+  # Reconstruct the URL parameters and encode them
+  url_string = urlencode(zip(keys, values))
   
   #Construct the string to sign
-  string_to_sign = "GET\n%(host)s\n/onca/xml\n%(url_string)s" % {'host':host,'url_string':url_string}
+  string_to_sign = "GET\n%(host)s\n/onca/xml\n%(url_string)s" % {'host':host, 'url_string':url_string}
 
   # Sign the request
   signature = hmac.new(key=SETTINGS_AWS_SECRET_ACCESS_KEY,
@@ -78,9 +76,9 @@ def getRequestUrl(awl_url, list_type, awl_id):
   signature = base64.encodestring(signature)
   
   # Make the signature URL safe
-  signature = signature.replace('+','+')
-  signature = signature.replace('=','=')
-  url_string += "&Signature;=%s" % signature
+  signature = signature.replace('+','%20')
+  signature = signature.replace('=','%3D')
+  url_string += "&Signature=%s" % signature
   
   request_url = base_url + '?%s' % url_string
 
