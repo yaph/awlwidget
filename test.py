@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-import cgi
 import re
 
 urls = ['http://www.amazon.com/gp/registry/wishlist/R0W5YU2DDZMQ?ewqewqdsafgerf',
