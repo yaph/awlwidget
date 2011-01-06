@@ -10,28 +10,7 @@ from settings import *
 from urllib import urlencode
 from xml.dom import minidom
 
-def getRequestUrl(awl_url, list_type, awl_id):
-  # defaults
-  if '' == awl_id:
-    awl_id = SETTINGS_AWL_ID
-  awl_tag = ''
-  awl_domain = 'com'
-  
-  url_parts = urlparse.urlsplit(awl_url)
-  host = url_parts.netloc
-  path = url_parts.path
-  query = url_parts.query
-
-  if re.search('amazon\.', host) and path != '':
-    host_parts = host.rsplit('.')
-    awl_domain = host_parts.pop()
-    
-    if '' == list_type:
-      pat_rewrite = re.compile('^/gp/registry/(?:wishlist/)?([^/&\?]+)')
-      if pat_rewrite.search(path):
-        m = pat_rewrite.search(path)
-        awl_id = m.group(1)
-
+def getRequestUrl(awl_id, awl_domain):
   if 'com' == awl_domain:
     awl_tag = 'awlwidget-20'
 
